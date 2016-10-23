@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>使用HTML5实现网页绘图</title>
+</head>
+
+<body>
+<p>Canvas</p>
+<canvas id="myCanvas" weight="100" height="200"></canvas> <!--绘图工具-->
+<!--在JavaScript中,getcontext是内建的HTML5对象，拥有多种绘制图形、矩形、圆形、字符以及添加图像的方法。
+<!--fillStyle方法为所绘制的图形添加颜色，
+    fillRect方法规定了形状、位置、大小-->
+<script language="javascript">
+  var canvas=document.getElementById('myCanvas');
+  var ctx=canvas.getContext('2d');
+  ctx.fillStyle='#ff00ff';
+  ctx.fillRect(0,0,100,200);
+  </script>
+
+<!--绘制圆形-->
+<canvas id="myCanvas1" weight="300" height="300"></canvas>
+<script language="javascript">
+  var canvas1=document.getElementById('myCanvas1');
+  var ctx1=canvas1.getContext('2d');
+  ctx1.beginPath();
+  ctx1.arc(100,200,100,0,Math.PI*2);
+  ctx1.stroke();
+  </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+@charset "utf-8";
+/* CSS Document */
+body {
+	background-image: url(../images/32401.jpg);
+	background-repeat: no-repeat;
+	background-position: center top;
+	margin: 0px;
+}
+#box {
+	position: absolute;
+	bottom: 30px; /*bottom 属性规定元素的底部边缘。该属性定义了定位元素下外边距边界与其包含块下边界之间的偏移。*/
+	width:100%;
+	height:auto;
+	overflow:hidden;</* overflow 属性规定当内容溢出元素框时发生的事情
+	visible	默认值。内容不会被修剪，会呈现在元素框之外。
+	hidden	内容会被修剪，并且其余内容是不可见的。
+	scroll	内容会被修剪，但是浏览器会显示滚动条以便查看其余的内容。
+	auto	如果内容被修剪，则浏览器会显示滚动条以便查看其余的内容。
+	inherit	规定应该从父元素继承 overflow 属性的值。
+	*/>
+	margin:0px auto;
+	text-align: center;</*textAlign 属性根据锚点，设置或返回文本内容的当前对齐方式。
+	start	默认。文本在指定的位置开始。
+	end	文本在指定的位置结束。
+	center	文本的中心被放置在指定的位置。
+	left	文本左对齐。
+	right	文本右对齐。*/>
+}
+
