@@ -76,13 +76,16 @@ html中添加注释：<!--xxx-->
   水平线：<hr/>（默认水平线是空心立体饿效果，noshade是布尔值的属性，添加不会显示）
   文本滚动<marquee>标签
     <marquee aligin="对齐方式center/left/right" 
-	         bgcolor="内容滚动背景颜色" behavior="文本滚动方式scoll：循环滚动/alternate：内容来回滚动/slide：内容仅滚动一次" 
-			 scrolldelay="内容滚动的时间间隔，数值越大速度越慢" 
-			 width="300" height="200" 
-			 direction="left、right、up、down滚动方向" 
-			 scrollamount="滚动速度，数值越小滚动越慢"
-			 onMouseOver="当鼠标移动到区域上执行的操作"
-			 onMouseOut="当鼠标移开区域上执行的操作">
+	         滚动背景颜色：bgcolor="内容滚动背景颜色" 
+			 滚动范围：width="300" height="200"
+			 滚动方向:direction="left、right、up、down" 
+			 滚动方式:behavior="scoll循环滚动/alternate内容来回滚动/slide内容仅滚动一次" 
+			 滚动速度:scrollamount="数值越小滚动越慢"
+			 滚动延迟：scrolldelay="内容滚动的时间间隔，数值越大速度越慢"
+			 空白空间：hspace vspace
+			 滚动循环：loop（默认值是-1，滚动会不断的循环下去）
+			 JavaScript中：onMouseOver事件="当鼠标移动到区域上执行的操作"
+			 onMouseOut事件="当鼠标移开区域上执行的操作">
   文本列表
     无序列表
 	  <ul>
@@ -105,12 +108,165 @@ html中添加注释：<!--xxx-->
 	三个一起出现
 
 网页中的图片格式：gif、JPEG、png
+  图像标签：
+    <img src="图像来源" height="图像高度" width="图像宽度" border="图像边框的宽度" alt="提示文字的内容">
+  
+  图文混排：
+    <img src="" align=""/>
+	  top:图像顶部和同行文本的最高部分对齐
+	  middle:图像中部和同行文本的基线对齐，通常是文本基线
+	  bottom:图像顶部和同行文本的底部对齐
+	  left:图像和左边界对齐（文本环绕图像）
+	  right:图像和右边界对齐（文本环绕图像）
+	  absmiddle:图像中部和同行文本的中部绝对对齐
+  实现图文混排之后，如何控制文字与图片之间的距离：
+    hspace属性设置图像的水平边距；vspace属性设置图像的垂直边距
+  
+  滚动图片：
+    <marquee><img src=""></marquee>
 	
+超链接：
+  <a href="">xxxx</a>
+  内部链接：网站内部文件之间的链接
+  外部链接：网站内容链接到站点以外的链接
+  超链接打开方式：target="_blank/_parent/_self/_top"
+  超链接提示：title属性
+  锚点链接：网站中一个页面内容过多
+    <a name="锚点名称">xxx</a>
+	在<a href="#锚点名称">xxx</a>  注意是：#加锚点名称
+	锚点的命名规则：只能包含小写ASCII码和数字，且不能以数字开头，可以在网页任意位置创建锚点，但是锚点名称不能重复
+	
+	特殊超链接：
+	  空链接用#代替
+	  电子邮件链接：<a href="mailto:邮件地址?subject=要输入的主题">xxx</a> 注：主题可不写
+	  下载链接：<a href="下载地址">xxx</a>
+	图像热点链接：将图片划分多个区域，设置不同链接
+	  <img src="" usemap="#Map"/>
+	    <map name="Map" id="Map">
+		  <area shape="rect" coords="482,227,766,354" href="http://www.baidu.com" target="_blank" alt="在网页中加入空格" />
+          <area shape="circle" coords="571,118,45" href="http://www.sina.com" target="_blank" alt="在网页中加入空格" />
+          <area shape="poly" coords="401,297,83,269,81,270,79,401" href="http://www.baidu.com" target="_blank" alt="在网页中加入空格" />
+		</map>
+	   usemap：定义图片的映射名称
+	   <map>：其中包含多个<area>标签，其中name值就是映射名称
+	   <area>：定义各个热区和超链接
+	   shape：定义热区形状
+	   coords：定义矩形、圆形或多边形区域的图标
+	     矩形区域：coords(left,right,top,bottom),矩形左上角和右下角顶点坐标
+	     圆形区域：coords(center-x,center-y,radius)
+		 多边形：coordsd(x1,y1,x2,y2...)
+		 
+多媒体应用
+  插入flash动画：<embed>标签
+    <embed src="" width="" height=""/>
+  插入FLV视频：<object>标签   （由于代码较多，建议使用Dreamweaver设计图“插入”面板中的FLV按钮）
+    <object classid="" width="" height="" id="">
+	  <param name="" value="">
+      <param name="" value="">	  
+	</object>
+     classid：用于指定应该使用哪种播放器播放多媒体文件，如果是FlashPlayer，指定编码：D27CDB6E-AE6D-11cf-96B8-444553540000；
+	                                                    如果是Windows Media Player，指定编码：6BF52A52-394A-11D3-B153-00C04FAA
+	 第一个<param />标签，设置FLV视频的外观，值使用的是.swf文件
+	 第二个<param />标签，设置了FLV视频的多个属性，skinName属性：设置FLV播放器外观；streamNmae属性：设置需要播放的FLV视频的路径和地址；
+	                                               autoPlay属性：设置是否自动播放；autoRewind属性：设置是否循环播放
+  插入普通视频<embed>标签（注：宽、高代表音频宽、高）
+    <embed src="" width="" height="" autostart="true自动播放/false" loop="true无限循环播放/false只播放一次">xxx</embed>
+  
+  添加背景音乐：<bgsound />标签
+    <bgsound src="" loop="默认-1，表示无限循环播放"/>
+  
+  嵌入音频：<embed />bq（注：宽、高代表播放器宽、高）
+    <embed src="" width="" height="" autostart="" loop=""/>
 
+  插入外部程序：
+    调用外部JavaScript程序：<script src="" ></script>
+	补充：显示当前时间的js程序：
+	setInterval("text.innerHTML=newDate().toLocaleString()+'星期'+'日一二三四五六'.charAt(new Date().getDay());",1000);
+	
+表格设置
+  表格基本构成：<table>、<tr>、<td>标签
+  表格标题：<caption>标签（好处：定义咋表格内，随着表格位置变化而变化）
+  表头：<thead>  表主体：<tbody>  表尾：<tfoot>
+  表格属性：<table width="" height="" align="对齐方式" border="边框宽度" bordercolor="边框颜色" cellspacing="各单元格之间的距离"
+            cellpadding="各单元格中内容与单元格边框之间的距离">xxxxx</table>
+  表格的背景颜色：bgcolor  表格的背景图片：background
+  单元行属性：<tr height="行高" align="水平对齐方式" valign="垂直对齐方式"/>
+  单元格属性：<tr height="单元格高" width="单元格宽" align="水平对齐方式" valign="垂直对齐方式"/>
+    （注：单元格的对齐方式优先级>单元行）
+  合并单元格：<td colspan="水平单元格数目" rowspan="垂直单元格数目" />
+  
+网页框架
+  创建框架集标签：<frame>标签
+    <frameset rows="232,*,70" frameborder="no" border="0" framespacing="0">
+      <frame src="top.html" name="topframe" noresize="noresize" />
+      <frame src="main.html" name="mainframe" scrolling=""/>
+      <frame src="bottom.html" name="bottomframe" />
+    </frameset>
+   框架主要分为上、中和下
+   设置框架页面高度方法：单位为像素：<frameset rows="100,200,*">；百分比：<frameset rows="20%,50%,*">
+   调整框架比例：noresize="noresize只有这一个值" 
+   边框：frameborder="0/1或者yes/no" ，0和no代表无边框	
+   滚动条：scrolling="yes/no/auto"
+   
+   浮动框架：IFrame框架
+     插入IFrame框架：<iframe src="所链接的页面地址">xxxx</iframe>
+	 IFrame框架属性：<iframe src="" width="" height="" align="left/right/middle/bottom" scrolling="（设置滚动条）no/yes/none"
+	                         frameborder="（边框）0/1或者yes/no">xxxx</iframe
+							 
+使用表单
+  表单：<form name="表单名称" action="表单处理程序" method="get/post">xxx</from>
+  插入表单元素-文本：<input type="text" value="初始内容" size="字符宽度" maxlength="最多字符数" readonly="true/readonly"（只能读，不可改）/>
+  密码：<input type="password">
+  文本区域：<textarea cols="宽度" rows="行数">xxx</textarea>，
+    文本自动换行：属性wrap="off/virtual/phisical"，off：字符输入超过文本框宽度时不会自动换行；
+	              virtual和phicial都是自动换行，区别virtual输出的数据在自动换行处没有换行符号，而phicial输出的数据在自动换行处有换行符号。
+  隐藏域：<input type="hidden" value="数据"/>（注：隐藏域在页面中不可见，但是可以装载和传输数据）	
+  复选框：<input type="checkbox" checked="checked"（表示默认选中状态）/>
+  单选按钮：<input type="radio"/>（注：为了保证多个按钮属于同一组，所以一组中每个单选按钮都需要具有相同的name属性值）
+  列表/菜单：
+    <select multiple（表示下拉单是列表框）size=""（即列表框长度）>
+	  <option value=""></option>
+	</select>
+  图像域：<input type="image" src=""/>
+  文件域：<input type="file">
+  按钮：（修改按钮上的文字，通过修改<input>标签中的value属性）
+    普通按钮：<input type="button">
+	重置按钮：<input type="reset">
+	提交按钮：<input type="submit">
 
-
-
-
-
-
-
+css基础
+  css样式基本语法：在html网页的<title></title>中添加<style type="text/css">xxxxxx</style>，是为了让浏览器知道这是css代码
+  css样式规则：选择符和声明（一般包含在{}内）
+  css样式选择符：
+    通配选择符：*，表示所有 *{属性：属性值;}
+	标签选择符：标签名称{属性：属性值;}，标签例如<p>、<body>、<h1>等html标签
+	类选择符：.类名称{属性：属性值;} ,在html中给标签定义class属性，然后在css中就类似表示，例如：<p class="font1">aaaaa</p>，在css中就是：.font1{}	
+	ID选择符：#ID名称{属性：属性值;},例如：<p id="font1">aaaaa</p>，在css中就是：#font1{},（注：ID名称可以包含任何字母和数字组合，但不能以数字或者特殊字符开头）
+	伪类选择符：不同浏览器支持不同类型的，但是超链接伪类是所有浏览器都支持的，包括：（:link  :visited  :hover  :active）
+	  link（未访问链接）、hover（鼠标停留在链接上）、active（激活链接）、visited（已访问链接）
+	组合选择符：将多种选择符进行搭配
+	群选择符：#a img,#b img,#c img{}
+  网页中用css的4种方式：
+    1、内联css样式：<p style="font-family:宋体;font-size:12px">内联样式</p>
+	2、内部css样式：<style type="text/css">xxxxxxxxxxx</style>
+	3、外部css样式：<link rel="stylesheet" type="text/css" href="xxxx.css">
+	4、导入外部样式：<style type="text/css">@import url("路径和地址");</style>
+  css样式的特性：
+    1、继承性：子标签继承父标签的属性，还可以修改定义父标签
+	2、特殊性：优先性
+	3、层叠性：一个网页包含多个css样式，根据前后顺序，后定义的css样式会被采用
+	4、重要性：！important
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
