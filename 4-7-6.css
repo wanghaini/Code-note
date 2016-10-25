@@ -1,0 +1,15 @@
+@charset "utf-8";
+/* CSS Document */
+* {
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+}
+body {
+	background-color: #505050;
+}
+#box {
+	text-align: center;
+}
+
+
